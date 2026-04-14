@@ -7,6 +7,7 @@ export const siteContent = {
   nav: [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
+    { label: "Compliance", href: "/compliance" },
     { label: "Contact", href: "/contact" },
     { label: "Privacy Policy", href: "/privacy" },
   ],
