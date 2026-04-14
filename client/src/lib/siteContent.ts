@@ -1,8 +1,8 @@
 export const siteContent = {
   brand: "Engineer Solutions",
   domain: "engineersolutions.co.uk",
-  email: "dave@engineersolutions.co.uk",
-  primaryCta: "Speak to Dave",
+  email: "team@engineersolutions.co.uk",
+  primaryCta: "Speak to Our Team Today",
   secondaryCta: "View Services",
   nav: [
     { label: "Home", href: "/" },

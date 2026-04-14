@@ -114,14 +114,14 @@ export default function Compliance() {
       <section className="border-b border-slate-900/10 bg-slate-100 text-slate-950">
         <div className="container grid gap-10 py-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:py-20">
           <div className="max-w-xl">
-            <p className="text-[0.74rem] uppercase tracking-[0.34em] text-sky-800">How Dave can assist</p>
+            <p className="text-[0.74rem] uppercase tracking-[0.34em] text-sky-800">How our team can assist</p>
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
               Engineer Solutions helps turn compliance pressure into a practical action plan.
             </h2>
             <p className="mt-6 text-base leading-8 text-slate-700">
-              Dave’s company supports engineering and technology-focused SMEs with clear, commercially grounded advice. The aim is not
-              to add noise or unnecessary complexity, but to help the business understand where the exposure sits, what needs attention
-              first, and how to strengthen resilience in a realistic way.
+              Our team supports engineering and technology-focused SMEs with clear, commercially grounded advice. The aim is not to add
+              noise or unnecessary complexity, but to help the business understand where the exposure sits, what needs attention first,
+              and how to strengthen resilience in a realistic way.
             </p>
           </div>
 
@@ -144,13 +144,13 @@ export default function Compliance() {
               If the Cyber Security and Resilience Bill is already on your radar, now is the right time to turn awareness into action.
             </h2>
             <p className="mt-5 text-base leading-8 text-slate-700">
-              Speak to Dave about reviewing your current position, identifying likely pressure points, and putting a more resilient,
-              more credible compliance path in place.
+              Speak to our team today about reviewing your current position, identifying likely pressure points, and putting a more
+              resilient, more credible compliance path in place.
             </p>
           </div>
           <a href={`mailto:${siteContent.email}?subject=Cyber%20Security%20and%20Resilience%20Bill%20readiness`}>
             <Button className="h-12 rounded-none border border-slate-950 bg-slate-950 px-6 text-[0.76rem] uppercase tracking-[0.2em] text-white hover:bg-slate-800">
-              Speak to Dave About Readiness
+              Speak to Our Team Today
               <ArrowRight className="ml-2 size-4" />
             </Button>
           </a>

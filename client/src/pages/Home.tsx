@@ -175,7 +175,7 @@ export default function Home() {
       <section className="border-b border-slate-900/10 bg-slate-100 text-slate-950">
         <div className="container grid gap-12 py-16 lg:grid-cols-[0.6fr_0.6fr_0.8fr] lg:items-center lg:py-24">
           <div className="lg:col-span-2">
-            <p className="text-[0.74rem] uppercase tracking-[0.34em] text-sky-800">Why Dave</p>
+            <p className="text-[0.74rem] uppercase tracking-[0.34em] text-sky-800">Why Engineer Solutions</p>
             <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
               Experienced specialist thinking, presented in a calm and commercially useful way.
             </h2>
@@ -238,8 +238,8 @@ export default function Home() {
               Build IT that supports growth, resilience, and continuity.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300">
-              If your business depends on stable systems, secure operations, and dependable support, start a conversation with Dave
-              about where your current environment is strong and where it may be exposed.
+              If your business depends on stable systems, secure operations, and dependable support, speak to our team today about
+              where your current environment is strong and where it may be exposed.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link href="/contact">

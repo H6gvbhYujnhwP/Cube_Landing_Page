@@ -32,7 +32,7 @@ export default function Contact() {
   return (
     <SiteLayout
       eyebrow="Contact"
-      title="Speak to Dave about secure, reliable IT for your business."
+      title="Speak to our team today about secure, reliable IT for your business."
       intro="If your systems need to support continuity, resilience, and dependable day-to-day operations, start with a focused conversation about your current environment and where it may need attention."
     >
       <section className="border-b border-slate-900/10 bg-slate-100 text-slate-950">
@@ -72,8 +72,8 @@ export default function Contact() {
             <p className="text-[0.72rem] uppercase tracking-[0.3em] text-slate-500">Request an IT Review</p>
             <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-slate-950">Start the conversation</h2>
             <p className="mt-4 max-w-2xl text-base leading-8 text-slate-700">
-              Share a few details below and your email application will open a pre-filled enquiry to Dave. That keeps the site simple,
-              direct, and ready for a live inbox workflow.
+              Share a few details below and your email application will open a pre-filled enquiry to our team. That keeps the site
+              simple, direct, and ready for a live inbox workflow.
             </p>
 
             <form className="mt-8 grid gap-5" onSubmit={handleSubmit}>

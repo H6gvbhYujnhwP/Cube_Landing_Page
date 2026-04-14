@@ -92,12 +92,12 @@ export default function Services() {
           <div className="max-w-2xl">
             <p className="text-[0.74rem] uppercase tracking-[0.34em] text-sky-800">Next step</p>
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-              Speak to Dave about secure, reliable IT for your engineering environment.
+              Speak to our team today about secure, reliable IT for your engineering environment.
             </h2>
           </div>
-          <a href={`mailto:${siteContent.email}?subject=Speak%20to%20Dave%20about%20engineering%20IT`}>
+          <a href={`mailto:${siteContent.email}?subject=Speak%20to%20our%20team%20about%20engineering%20IT`}>
             <Button className="h-12 rounded-none border border-slate-950 bg-slate-950 px-6 text-[0.76rem] uppercase tracking-[0.2em] text-white hover:bg-slate-800">
-              Speak to Dave
+              Speak to Our Team Today
               <ArrowRight className="ml-2 size-4" />
             </Button>
           </a>
