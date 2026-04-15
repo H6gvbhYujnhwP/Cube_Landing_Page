@@ -2,6 +2,7 @@
   Design note: Precision Blueprint Modernism.
   The Contact page should feel calm, direct, and conversion-led, with no generic form-heavy clutter.
   Use structured panels, strong typography, and specialist reassurance rather than sales pressure.
+  Form interactions should feel dependable and operationally clear, with concise status feedback.
 */
 import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,10 @@ import { ArrowRight, CheckCircle2, Mail, ShieldCheck } from "lucide-react";
 import { FormEvent, useState } from "react";
 import { Link } from "wouter";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpqkqqpl";
+
+type SubmissionState = "idle" | "submitting" | "succeeded" | "failed";
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -17,16 +22,47 @@ export default function Contact() {
     email: "",
     details: "",
   });
+  const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
+  const [submissionMessage, setSubmissionMessage] = useState("");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setSubmissionState("submitting");
+    setSubmissionMessage("");
 
-    const subject = encodeURIComponent(`Engineering IT Review - ${formData.company || formData.name || "New enquiry"}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nCompany: ${formData.company}\nEmail: ${formData.email}\n\nWhat would you like to discuss?\n${formData.details}`,
-    );
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          company: formData.company,
+          email: formData.email,
+          details: formData.details,
+          _subject: `Engineer Solutions enquiry - ${formData.company || formData.name || "New enquiry"}`,
+          form_name: "Website Request",
+        }),
+      });
 
-    window.location.href = `mailto:${siteContent.email}?subject=${subject}&body=${body}`;
+      if (!response.ok) {
+        throw new Error("Formspree submission failed");
+      }
+
+      setSubmissionState("succeeded");
+      setSubmissionMessage("Thank you. Your enquiry has been sent to our team and we will respond shortly.");
+      setFormData({
+        name: "",
+        company: "",
+        email: "",
+        details: "",
+      });
+    } catch (error) {
+      setSubmissionState("failed");
+      setSubmissionMessage("Your enquiry could not be sent just now. Please try again, or email our team directly below.");
+    }
   };
 
   return (
@@ -72,16 +108,17 @@ export default function Contact() {
             <p className="text-[0.72rem] uppercase tracking-[0.3em] text-slate-500">Request an IT Review</p>
             <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-slate-950">Start the conversation</h2>
             <p className="mt-4 max-w-2xl text-base leading-8 text-slate-700">
-              Share a few details below and your email application will open a pre-filled enquiry to our team. That keeps the site
-              simple, direct, and ready for a live inbox workflow.
+              Share a few details below and your enquiry will be sent directly to our team through the live website contact workflow.
             </p>
 
             <form className="mt-8 grid gap-5" onSubmit={handleSubmit}>
+              <input type="hidden" name="form_name" value="Website Request" />
               <div className="grid gap-5 sm:grid-cols-2">
                 <label className="grid gap-2 text-sm font-medium text-slate-700">
                   Name
                   <input
                     required
+                    name="name"
                     value={formData.name}
                     onChange={(event) => setFormData((current) => ({ ...current, name: event.target.value }))}
                     className="h-12 border border-slate-300 bg-white px-4 text-base text-slate-950 outline-none transition focus:border-sky-700"
@@ -92,6 +129,7 @@ export default function Contact() {
                   Company
                   <input
                     required
+                    name="company"
                     value={formData.company}
                     onChange={(event) => setFormData((current) => ({ ...current, company: event.target.value }))}
                     className="h-12 border border-slate-300 bg-white px-4 text-base text-slate-950 outline-none transition focus:border-sky-700"
@@ -105,6 +143,7 @@ export default function Contact() {
                 <input
                   type="email"
                   required
+                  name="email"
                   value={formData.email}
                   onChange={(event) => setFormData((current) => ({ ...current, email: event.target.value }))}
                   className="h-12 border border-slate-300 bg-white px-4 text-base text-slate-950 outline-none transition focus:border-sky-700"
@@ -116,6 +155,7 @@ export default function Contact() {
                 What would you like to discuss?
                 <textarea
                   required
+                  name="details"
                   value={formData.details}
                   onChange={(event) => setFormData((current) => ({ ...current, details: event.target.value }))}
                   className="min-h-36 border border-slate-300 bg-white px-4 py-3 text-base text-slate-950 outline-none transition focus:border-sky-700"
@@ -123,9 +163,24 @@ export default function Contact() {
                 />
               </label>
 
+              {submissionMessage ? (
+                <p
+                  className={`border px-4 py-3 text-sm leading-7 ${
+                    submissionState === "succeeded"
+                      ? "border-emerald-200 bg-emerald-50 text-emerald-900"
+                      : "border-amber-200 bg-amber-50 text-amber-900"
+                  }`}
+                >
+                  {submissionMessage}
+                </p>
+              ) : null}
+
               <div className="flex flex-col gap-4 sm:flex-row">
-                <Button className="h-12 rounded-none border border-slate-950 bg-slate-950 px-6 text-[0.76rem] uppercase tracking-[0.2em] text-white hover:bg-slate-800">
-                  Send Enquiry
+                <Button
+                  disabled={submissionState === "submitting"}
+                  className="h-12 rounded-none border border-slate-950 bg-slate-950 px-6 text-[0.76rem] uppercase tracking-[0.2em] text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  {submissionState === "submitting" ? "Sending..." : "Send Enquiry"}
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
                 <Link href="/services">
