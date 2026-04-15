@@ -7,6 +7,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { siteContent } from "@/lib/siteContent";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Services() {
   return (
@@ -95,12 +96,12 @@ export default function Services() {
               Speak to our team today about secure, reliable IT for your engineering environment.
             </h2>
           </div>
-          <a href={`mailto:${siteContent.email}?subject=Speak%20to%20our%20team%20about%20engineering%20IT`}>
+          <Link href="/contact">
             <Button className="h-12 rounded-none border border-slate-950 bg-slate-950 px-6 text-[0.76rem] uppercase tracking-[0.2em] text-white hover:bg-slate-800">
               Speak to Our Team Today
               <ArrowRight className="ml-2 size-4" />
             </Button>
-          </a>
+          </Link>
         </div>
       </section>
     </SiteLayout>

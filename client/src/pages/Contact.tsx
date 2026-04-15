@@ -61,7 +61,7 @@ export default function Contact() {
       });
     } catch (error) {
       setSubmissionState("failed");
-      setSubmissionMessage("Your enquiry could not be sent just now. Please try again, or email our team directly below.");
+      setSubmissionMessage("Your enquiry could not be sent just now. Please try again in a moment using the form below.");
     }
   };
 
@@ -200,13 +200,12 @@ export default function Contact() {
             <div className="border border-slate-200 bg-slate-50 p-6">
               <div className="flex items-center gap-3 text-slate-950">
                 <Mail className="size-5 text-sky-800" />
-                <h3 className="text-lg font-semibold tracking-[-0.02em]">Email</h3>
+                <h3 className="text-lg font-semibold tracking-[-0.02em]">Contact route</h3>
               </div>
               <p className="mt-4 text-sm leading-7 text-slate-700">
-                <a href={`mailto:${siteContent.email}`} className="font-medium text-slate-950 underline decoration-sky-700/40 underline-offset-4">
-                  {siteContent.email}
-                </a>
+                Use the enquiry form on this page for all new requests so your message reaches the team through the live website workflow.
               </p>
+              <p className="mt-3 text-sm leading-7 text-slate-500">{siteContent.email}</p>
             </div>
             <div className="border border-slate-200 bg-slate-50 p-6">
               <div className="flex items-center gap-3 text-slate-950">

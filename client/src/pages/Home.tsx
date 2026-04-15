@@ -37,12 +37,12 @@ export default function Home() {
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a href={`mailto:${siteContent.email}?subject=Request%20an%20IT%20Review`}>
+              <Link href="/contact">
                 <Button className="h-12 rounded-none border border-cyan-300/45 bg-cyan-300/12 px-6 text-[0.76rem] uppercase tracking-[0.2em] text-white hover:bg-cyan-300/24">
                   Request an IT Review
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
-              </a>
+              </Link>
               <Link href="/services">
                 <Button
                   variant="outline"

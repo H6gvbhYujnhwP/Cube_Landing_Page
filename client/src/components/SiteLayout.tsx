@@ -66,12 +66,12 @@ export function SiteLayout({
           </nav>
 
           <div className="hidden lg:block">
-            <a href={`mailto:${siteContent.email}?subject=Engineering%20IT%20Review`}>
+            <Link href="/contact">
               <Button className="h-11 rounded-none border border-cyan-300/40 bg-cyan-300/10 px-5 text-[0.72rem] uppercase tracking-[0.22em] text-white hover:bg-cyan-300/20">
                 {siteContent.primaryCta}
                 <ArrowRight className="ml-2 size-4" />
               </Button>
-            </a>
+            </Link>
           </div>
 
           <button
@@ -90,12 +90,12 @@ export function SiteLayout({
               {siteContent.nav.map((item) => (
                 <NavLink key={item.href} href={item.href} label={item.label} onClick={() => setMobileOpen(false)} />
               ))}
-              <a href={`mailto:${siteContent.email}?subject=Engineering%20IT%20Review`} className="w-full">
+              <Link href="/contact" className="w-full" onClick={() => setMobileOpen(false)}>
                 <Button className="h-11 w-full rounded-none border border-cyan-300/40 bg-cyan-300/10 text-[0.72rem] uppercase tracking-[0.22em] text-white hover:bg-cyan-300/20">
                   {siteContent.primaryCta}
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         ) : null}
@@ -141,10 +141,11 @@ export function SiteLayout({
           <div>
             <h2 className="text-sm font-medium uppercase tracking-[0.2em] text-white">Contact</h2>
             <div className="mt-5 space-y-3 text-sm leading-7 text-slate-300">
+              <p className="text-slate-300">{siteContent.email}</p>
               <p>
-                <a className="transition-colors hover:text-white" href={`mailto:${siteContent.email}`}>
-                  {siteContent.email}
-                </a>
+                <Link href="/contact" className="transition-colors text-white underline decoration-cyan-300/50 underline-offset-4 hover:text-cyan-100">
+                  Use the contact form
+                </Link>
               </p>
               <p>{siteContent.domain}</p>
               <p>Built for UK engineering and aerospace SMEs.</p>
