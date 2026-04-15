@@ -68,7 +68,7 @@ export default function Contact() {
       }
 
       setSubmissionState("succeeded");
-      setSubmissionMessage("Thank you. Your enquiry has been sent to our team and we will respond shortly.");
+      setSubmissionMessage("Thank you. Your enquiry has been sent and our team will come back to you shortly.");
       setFormData({
         name: "",
         company: "",
@@ -180,15 +180,29 @@ export default function Contact() {
               </label>
 
               {submissionMessage ? (
-                <p
-                  className={`border px-4 py-3 text-sm leading-7 ${
+                <div
+                  role="status"
+                  aria-live="polite"
+                  className={`border px-4 py-3 ${
                     submissionState === "succeeded"
-                      ? "border-emerald-200 bg-emerald-50 text-emerald-900"
+                      ? "border-emerald-200 bg-emerald-50 text-emerald-950"
                       : "border-amber-200 bg-amber-50 text-amber-900"
                   }`}
                 >
-                  {submissionMessage}
-                </p>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2
+                      className={`mt-0.5 size-4 shrink-0 ${
+                        submissionState === "succeeded" ? "text-emerald-700" : "text-amber-700"
+                      }`}
+                    />
+                    <div>
+                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em]">
+                        {submissionState === "succeeded" ? "Enquiry sent" : "Submission issue"}
+                      </p>
+                      <p className="mt-1 text-sm leading-6">{submissionMessage}</p>
+                    </div>
+                  </div>
+                </div>
               ) : null}
 
               <div className="flex flex-col gap-4 sm:flex-row">
