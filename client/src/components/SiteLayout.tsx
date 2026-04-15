@@ -6,7 +6,7 @@
 import { siteContent } from "@/lib/siteContent";
 import { cn } from "@/lib/utils";
 import { ArrowRight, Menu } from "lucide-react";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "./ui/button";
 
@@ -31,6 +31,36 @@ function NavLink({ href, label, onClick }: { href: string; label: string; onClic
         )}
       />
     </Link>
+  );
+}
+
+function ContactCta({ className, onClick, children }: { className?: string; onClick?: () => void; children: React.ReactNode }) {
+  const [location, setLocation] = useLocation();
+
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (location === "/contact") {
+      event.preventDefault();
+      onClick?.();
+
+      if (typeof window !== "undefined") {
+        window.history.replaceState(null, "", "/contact#enquiry-form");
+        requestAnimationFrame(() => {
+          document.getElementById("enquiry-form")?.scrollIntoView({ block: "start", behavior: "smooth" });
+        });
+      }
+
+      return;
+    }
+
+    onClick?.();
+    setLocation("/contact#enquiry-form");
+    event.preventDefault();
+  };
+
+  return (
+    <a href="/contact#enquiry-form" onClick={handleClick} className={className}>
+      {children}
+    </a>
   );
 }
 
@@ -66,12 +96,12 @@ export function SiteLayout({
           </nav>
 
           <div className="hidden lg:block">
-            <Link href="/contact#enquiry-form">
+            <ContactCta>
               <Button className="h-11 rounded-none border border-cyan-300/40 bg-cyan-300/10 px-5 text-[0.72rem] uppercase tracking-[0.22em] text-white hover:bg-cyan-300/20">
                 {siteContent.primaryCta}
                 <ArrowRight className="ml-2 size-4" />
               </Button>
-            </Link>
+            </ContactCta>
           </div>
 
           <button
@@ -90,12 +120,12 @@ export function SiteLayout({
               {siteContent.nav.map((item) => (
                 <NavLink key={item.href} href={item.href} label={item.label} onClick={() => setMobileOpen(false)} />
               ))}
-              <Link href="/contact#enquiry-form" className="w-full" onClick={() => setMobileOpen(false)}>
+              <ContactCta className="w-full" onClick={() => setMobileOpen(false)}>
                 <Button className="h-11 w-full rounded-none border border-cyan-300/40 bg-cyan-300/10 text-[0.72rem] uppercase tracking-[0.22em] text-white hover:bg-cyan-300/20">
                   {siteContent.primaryCta}
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
-              </Link>
+              </ContactCta>
             </div>
           </div>
         ) : null}
@@ -143,9 +173,9 @@ export function SiteLayout({
             <div className="mt-5 space-y-3 text-sm leading-7 text-slate-300">
               <p className="text-slate-300">{siteContent.email}</p>
               <p>
-                <Link href="/contact#enquiry-form" className="transition-colors text-white underline decoration-cyan-300/50 underline-offset-4 hover:text-cyan-100">
+                <ContactCta className="transition-colors text-white underline decoration-cyan-300/50 underline-offset-4 hover:text-cyan-100">
                   Use the contact form
-                </Link>
+                </ContactCta>
               </p>
               <p>{siteContent.domain}</p>
               <p>Built for UK engineering and aerospace SMEs.</p>
