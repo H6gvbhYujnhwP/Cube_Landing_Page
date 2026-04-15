@@ -37,7 +37,7 @@ export default function Home() {
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Link href="/contact">
+              <Link href="/contact#enquiry-form">
                 <Button className="h-12 rounded-none border border-cyan-300/45 bg-cyan-300/12 px-6 text-[0.76rem] uppercase tracking-[0.2em] text-white hover:bg-cyan-300/24">
                   Request an IT Review
                   <ArrowRight className="ml-2 size-4" />
@@ -242,7 +242,7 @@ export default function Home() {
               where your current environment is strong and where it may be exposed.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <Link href="/contact">
+              <Link href="/contact#enquiry-form">
                 <Button className="h-12 rounded-none border border-cyan-300/45 bg-cyan-300/12 px-6 text-[0.76rem] uppercase tracking-[0.2em] text-white hover:bg-cyan-300/24">
                   Book a Strategy Call
                 </Button>

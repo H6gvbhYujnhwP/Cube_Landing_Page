@@ -149,7 +149,7 @@ export default function Compliance() {
               resilient, more credible compliance path in place.
             </p>
           </div>
-          <Link href="/contact">
+          <Link href="/contact#enquiry-form">
             <Button className="h-12 rounded-none border border-slate-950 bg-slate-950 px-6 text-[0.76rem] uppercase tracking-[0.2em] text-white hover:bg-slate-800">
               Speak to Our Team Today
               <ArrowRight className="ml-2 size-4" />

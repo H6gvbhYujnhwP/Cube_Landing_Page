@@ -8,14 +8,15 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { Button } from "@/components/ui/button";
 import { siteContent } from "@/lib/siteContent";
 import { ArrowRight, CheckCircle2, Mail, ShieldCheck } from "lucide-react";
-import { FormEvent, useState } from "react";
-import { Link } from "wouter";
+import { FormEvent, useEffect, useState } from "react";
+import { Link, useLocation } from "wouter";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpqkqqpl";
 
 type SubmissionState = "idle" | "submitting" | "succeeded" | "failed";
 
 export default function Contact() {
+  const [location] = useLocation();
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -24,6 +25,21 @@ export default function Contact() {
   });
   const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
   const [submissionMessage, setSubmissionMessage] = useState("");
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const scrollToTarget = () => {
+      if (window.location.hash === "#enquiry-form") {
+        document.getElementById("enquiry-form")?.scrollIntoView({ block: "start", behavior: "auto" });
+        return;
+      }
+
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    };
+
+    requestAnimationFrame(scrollToTarget);
+  }, [location]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -104,7 +120,7 @@ export default function Contact() {
 
       <section className="border-b border-slate-900/10 bg-white text-slate-950">
         <div className="container grid gap-8 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:py-20">
-          <div className="border border-slate-200 bg-slate-50 p-8">
+          <div id="enquiry-form" className="scroll-mt-28 border border-slate-200 bg-slate-50 p-8">
             <p className="text-[0.72rem] uppercase tracking-[0.3em] text-slate-500">Request an IT Review</p>
             <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] text-slate-950">Start the conversation</h2>
             <p className="mt-4 max-w-2xl text-base leading-8 text-slate-700">

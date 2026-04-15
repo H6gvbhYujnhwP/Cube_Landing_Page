@@ -66,7 +66,7 @@ export function SiteLayout({
           </nav>
 
           <div className="hidden lg:block">
-            <Link href="/contact">
+            <Link href="/contact#enquiry-form">
               <Button className="h-11 rounded-none border border-cyan-300/40 bg-cyan-300/10 px-5 text-[0.72rem] uppercase tracking-[0.22em] text-white hover:bg-cyan-300/20">
                 {siteContent.primaryCta}
                 <ArrowRight className="ml-2 size-4" />
@@ -90,7 +90,7 @@ export function SiteLayout({
               {siteContent.nav.map((item) => (
                 <NavLink key={item.href} href={item.href} label={item.label} onClick={() => setMobileOpen(false)} />
               ))}
-              <Link href="/contact" className="w-full" onClick={() => setMobileOpen(false)}>
+              <Link href="/contact#enquiry-form" className="w-full" onClick={() => setMobileOpen(false)}>
                 <Button className="h-11 w-full rounded-none border border-cyan-300/40 bg-cyan-300/10 text-[0.72rem] uppercase tracking-[0.22em] text-white hover:bg-cyan-300/20">
                   {siteContent.primaryCta}
                   <ArrowRight className="ml-2 size-4" />
@@ -143,7 +143,7 @@ export function SiteLayout({
             <div className="mt-5 space-y-3 text-sm leading-7 text-slate-300">
               <p className="text-slate-300">{siteContent.email}</p>
               <p>
-                <Link href="/contact" className="transition-colors text-white underline decoration-cyan-300/50 underline-offset-4 hover:text-cyan-100">
+                <Link href="/contact#enquiry-form" className="transition-colors text-white underline decoration-cyan-300/50 underline-offset-4 hover:text-cyan-100">
                   Use the contact form
                 </Link>
               </p>
