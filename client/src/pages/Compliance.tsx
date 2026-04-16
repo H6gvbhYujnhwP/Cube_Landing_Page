@@ -66,7 +66,7 @@ export default function Compliance() {
 
           <div className="relative overflow-hidden border border-slate-200 bg-slate-900 p-3 shadow-[0_24px_54px_rgba(2,12,22,0.18)]">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663048135071/bPzD5K8zDKUGNyZZGEdPa6/engineer-solutions-contact-scene-7RjXQ9wqK95dLeSndq1b9f.webp"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663048135071/kmdkEddPrMedMhC5vbJdqs/engineer-solutions-contact-scene-SoSvbvFgsq57shC7CE7Rhc.webp"
               alt="Engineering leadership reviewing cyber resilience and compliance priorities"
               className="aspect-[4/3] w-full object-cover"
             />
