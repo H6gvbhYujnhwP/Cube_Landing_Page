@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import { CheckCircle2, Download, ArrowRight, Lock } from "lucide-react";
+import { CheckCircle2, ArrowRight, Lock } from "lucide-react";
 import { FORMSPREE_ENDPOINT } from "@/leadmagnets/lib/brand";
 
 interface LeadFormProps {
@@ -42,7 +42,7 @@ export default function LeadForm({ resourceName, ctaLabel, note }: LeadFormProps
       });
       if (!res.ok) throw new Error("Submission failed");
       setSubmitted(true);
-      toast.success("Thanks — your download is on its way.");
+      toast.success("Thanks for getting in touch — we'll be in touch shortly.");
     } catch {
       toast.error("Something went wrong. Please try again or call us.");
     } finally {
@@ -60,13 +60,11 @@ export default function LeadForm({ resourceName, ctaLabel, note }: LeadFormProps
           You&apos;re all set, {form.name.split(" ")[0]}.
         </h3>
         <p className="mt-3 text-[14px] leading-relaxed text-[#44546a]">
-          The <span className="font-semibold text-[#0d1b2a]">{resourceName}</span> is on its way to{" "}
-          <span className="font-semibold text-[#2f8f12]">{form.email}</span>. We&apos;ll follow up
-          with a short, practical conversation — no hard sell, no jargon.
+          Thank you for getting in touch — someone will be in touch shortly!
         </p>
         <div className="mt-6 flex items-center gap-2 text-[13px] text-[#5a6b80]">
-          <Download className="h-4 w-4" />
-          Check your inbox (and spam) for the download link.
+          <CheckCircle2 className="h-4 w-4" />
+          A short, practical conversation — no hard sell, no jargon.
         </div>
       </div>
     );
