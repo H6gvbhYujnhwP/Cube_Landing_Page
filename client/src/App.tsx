@@ -15,6 +15,11 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import Privacy from "./pages/Privacy";
 import Services from "./pages/Services";
+// Lead magnet landing pages (self-contained, light theme)
+import Funding from "@/leadmagnets/pages/Funding";
+import HealthCheck from "@/leadmagnets/pages/HealthCheck";
+import CostReview from "@/leadmagnets/pages/CostReview";
+import ModernisationMap from "@/leadmagnets/pages/ModernisationMap";
 
 function ScrollManager() {
   const [location] = useLocation();
@@ -52,6 +57,11 @@ function Router() {
         <Route path="/compliance" component={Compliance} />
         <Route path="/contact" component={Contact} />
         <Route path="/privacy" component={Privacy} />
+        {/* Lead magnet landing pages */}
+        <Route path="/funding" component={Funding} />
+        <Route path="/it-health-check" component={HealthCheck} />
+        <Route path="/it-cost-review" component={CostReview} />
+        <Route path="/modernisation-map" component={ModernisationMap} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>
